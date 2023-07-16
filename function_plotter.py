@@ -19,24 +19,27 @@ import sys
 
 
 
-accepted_symbols=['+', '- ','/', '*','^','x','X','0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.']
+accepted_symbols=['+', '- ','/', '*','^','x','X','0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.','(',')']
 
 def extract_function(string,x):
     if len(string)==0:
-        return "please, Enter the equation"
+        return "Please, Enter the equation"
     else:
         notAccepted=[]
         for symbol in string:
             if(symbol not in accepted_symbols):
                 notAccepted.append(symbol)
         if(notAccepted):
-            return "you can't use: {}".format(", ".join(str(i) for i in notAccepted))
+            return "You can't use: {}".format(", ".join(str(i) for i in notAccepted))
         else:
             if('x'  not in string):
                 string=string+'+0*x'
             string=string.replace('^', '**')
-            func=eval(string)
-            return func
+            try:
+                func=eval(string)
+                return func
+            except Exception as e:
+                return str(e)
 
 
 
@@ -116,7 +119,7 @@ class Window(QWidget):
         self.setLayout(layout)
 
         # set the application icon and center the window
-        self.add_icon()
+        self.add_icon(path="images/pngwing.com (1).png")
         self.center_window()
 
 
@@ -131,14 +134,19 @@ class Window(QWidget):
             x = np.linspace(xmin_value, xmax_value, 1000)
             function_value=self.function.text()
             y=extract_function(function_value,x)
+            #to check there are an error
             if isinstance(y,str):
                 self.Error_msg.setText(y)
                 self.Error_msg.exec_()
             else:
-                self.plotter.plot(x, y)
+                #to remove any inf values 
+                y = np.delete(y,np.where(np.isnan(y)|np.isinf(y)))
+                x = np.delete(x,np.where(np.isnan(y)|np.isinf(y)))
+                self.plotter.plot(x, y) 
 
-    def add_icon(self):
-        appIcon = QIcon("images/pngwing.com (1).png")
+
+    def add_icon(self,path):
+        appIcon = QIcon(path)
         self.setWindowIcon(appIcon)
 
     def center_window(self):
