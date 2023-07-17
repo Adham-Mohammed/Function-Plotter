@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Projecth [screenShots](images/screenShots)
 
-![Demo](https://github.com/Adham-Mohammed/Function-Plotter/assets/81479927/400db242-ec5d-4be5-bfc2-83ff474c9169)
+![Demo](https://github.com/Adham-Mohammed/Function-Plotter/assets/81479927/5488e7e4-f0ee-4e6c-a8ff-bb9803186be5)
 
 This project is a function plotter that allows users to input a mathematical function and plot it on a graph. The GUI is created using PySide2 and includes a QLineEdit for user input, QSpinBox widgets for setting the x-axis range, and a QPushButton to initiate the plot. The function input is checked for errors and parsed into a mathematical expression using the extract_function function. The plot is created using the Plotter class, which takes a matplotlib Figure object and creates a plot using the plot method. The resulting plot is displayed in a FigureCanvas widget. The application also includes an error message box and methods for setting the application icon and centering the window on the screen.
 
