@@ -9,7 +9,7 @@
   <h3 align="center">Function Plotter</h3>
 
   <p align="center">
-    A simple python GUI program that plots an arbitrary user-entered function.!
+    A simple python GUI program that plots user-entered function.!
 
 </div>
 
