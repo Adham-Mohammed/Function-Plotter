@@ -119,7 +119,7 @@ class Window(QWidget):
         self.setLayout(layout)
 
         # set the application icon and center the window
-        self.add_icon(path="images/pngwing.com (1).png")
+        self.add_icon(path="images/icon.png")
         self.center_window()
 
 
