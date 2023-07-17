@@ -19,7 +19,7 @@ import sys
 
 
 
-accepted_symbols=['+', '- ','/', '*','^','x','X','0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.','(',')']
+accepted_symbols=['+', '-','/', '*','^','x','X','0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.','(',')']
 
 def extract_function(string,x):
     if len(string)==0:
@@ -128,7 +128,7 @@ class Window(QWidget):
         xmin_value = self.xmin_spinbox.value()
         xmax_value = self.xmax_spinbox.value()
         if(xmin_value>xmax_value):
-            self.Error_msg.setText("X min cannot be smaller than X max")
+            self.Error_msg.setText("X max cannot be smaller than X min")
             self.Error_msg.exec_()
         else:
             x = np.linspace(xmin_value, xmax_value, 1000)
@@ -139,9 +139,6 @@ class Window(QWidget):
                 self.Error_msg.setText(y)
                 self.Error_msg.exec_()
             else:
-                #to remove any inf values 
-                y = np.delete(y,np.where(np.isnan(y)|np.isinf(y)))
-                x = np.delete(x,np.where(np.isnan(y)|np.isinf(y)))
                 self.plotter.plot(x, y) 
 
 
